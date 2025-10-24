@@ -3,16 +3,17 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
-import { ShieldAlert } from 'lucide-react';
+import { ShieldAlert, Loader2 } from 'lucide-react';
 
 interface DeleteAlertProps {
   isOpen: boolean;
   contactName: string;
   onClose: () => void;
   onConfirm: () => void;
+  isDeleting?: boolean;
 }
 
-export const DeleteAlert = ({ isOpen, contactName, onClose, onConfirm }: DeleteAlertProps) => {
+export const DeleteAlert = ({ isOpen, contactName, onClose, onConfirm, isDeleting = false }: DeleteAlertProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -42,14 +43,22 @@ export const DeleteAlert = ({ isOpen, contactName, onClose, onConfirm }: DeleteA
               </div>
             </div>
             <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-              <Button variant="outline" onClick={onClose}>
+              <Button variant="outline" onClick={onClose} disabled={isDeleting}>
                 Cancel
               </Button>
               <Button
                 onClick={onConfirm}
-                className="bg-red-600 text-white hover:bg-red-700"
+                className="bg-red-600 text-white hover:bg-red-700 disabled:opacity-50"
+                disabled={isDeleting}
               >
-                Delete
+                {isDeleting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Deleting...
+                  </>
+                ) : (
+                  'Delete'
+                )}
               </Button>
             </div>
           </motion.div>

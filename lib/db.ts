@@ -36,13 +36,12 @@ async function dbConnect() {
     cached.promise = mongoose
       .connect(MONGODB_URI)
       .then((mongoose) => {
-        cached.conn = mongoose;
-        return cached;
+        return mongoose;
       });
   }
 
   try {
-    await cached.promise;
+    cached.conn = await cached.promise;
   } catch (error) {
     cached.promise = null;
     throw error;

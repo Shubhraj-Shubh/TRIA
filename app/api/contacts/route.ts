@@ -11,18 +11,29 @@ export async function POST(request: Request) {
     const { name, email, phone } = body;
 
     if (!name || !email || !phone) {
-      return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
+
+    // Check if email already exists
+    const existingContact = await Contact.findOne({ email: email.toLowerCase() });
+    if (existingContact) {
+      return NextResponse.json({ error: 'A contact with this email already exists' }, { status: 409 });
+    }
+
     const avatarUrl = generateAvatarUrl(name);
     const newContact = new Contact({ name, email, phone, avatarUrl });
     await newContact.save();
     return NextResponse.json(newContact, { status: 201 });
   } catch (error: any) {
-    console.error(error);
+    console.error('Create contact error:', error);
     if (error.code === 11000) {
-      return NextResponse.json({ message: 'Email already exists' }, { status: 409 });
+      return NextResponse.json({ error: 'A contact with this email already exists' }, { status: 409 });
     }
-    return NextResponse.json({ message: 'Error creating contact', error: error.message }, { status: 500 });
+    if (error.name === 'ValidationError') {
+      const message = Object.values(error.errors).map((e: any) => e.message).join(', ');
+      return NextResponse.json({ error: message }, { status: 400 });
+    }
+    return NextResponse.json({ error: 'Failed to create contact' }, { status: 500 });
   }
 }
 

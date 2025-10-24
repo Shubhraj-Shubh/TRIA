@@ -16,10 +16,10 @@ import { useTheme } from 'next-themes';
 import { ContactModal } from '@/components/ContactModal';
 import { DeleteAlert } from './DeleteAlert';
 import { ContactFormData } from '@/lib/schema';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'; // React Query
-import axios from 'axios'; // Axios
-import { toast } from 'sonner'; // Toasts
-import { useDebounce } from 'use-debounce'; // Debounce
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
+import { toast } from 'sonner';
+import { useDebounce } from 'use-debounce';
 
 // --- API Fetching Function ---
 const fetchContacts = async (page: number, sort: string, search: string, country: string) => {
@@ -29,13 +29,11 @@ const fetchContacts = async (page: number, sort: string, search: string, country
       sort,
       search,
       country,
-      limit: 6 // ITEMS_PER_PAGE
+      limit: 6
     }
   });
   return data;
 };
-
-
 
 const ContactManager = () => { 
   // --- State for filters ---
@@ -65,13 +63,17 @@ const ContactManager = () => {
       const { data } = await axios.post('/api/contacts', newContact);
       return data;
     },
-    onSuccess: () => {
-      toast.success("Contact created successfully!");
-      queryClient.invalidateQueries({ queryKey: ['contacts'] }); // Refresh list
+    onMutate: () => {
+      toast.loading("Creating contact...", { id: 'create-contact' });
+    },
+    onSuccess: (data) => {
+      toast.success(`${data.name} has been added to your contacts!`, { id: 'create-contact' });
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
       handleCloseModal();
     },
     onError: (error: any) => {
-      toast.error(error.response?.data?.message || "Failed to create contact.");
+      const errorMessage = error.response?.data?.message || error.response?.data?.error || "Failed to create contact";
+      toast.error(errorMessage, { id: 'create-contact' });
     }
   });
 
@@ -79,14 +81,23 @@ const ContactManager = () => {
   const updateContactMutation = useMutation({
     mutationFn: async (updatedContact: ContactFormData) => {
       if (!selectedContact?._id) throw new Error("No contact selected");
-      const response = await axios.put(`/api/contacts/${selectedContact._id}`, updatedContact);
-      if (response.data.error) {
-        throw new Error(response.data.error);
+      const { data } = await axios.put(`/api/contacts/${selectedContact._id}`, updatedContact);
+      if (data.error) {
+        throw new Error(data.error);
       }
-      return response.data;
+      return data;
     },
-    onError: (error: Error) => {
-      toast.error(error.message || "Failed to update contact");
+    onMutate: () => {
+      toast.loading("Updating contact...", { id: 'update-contact' });
+    },
+    onSuccess: (data) => {
+      toast.success(`${data.name}'s information has been updated!`, { id: 'update-contact' });
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+      handleCloseModal();
+    },
+    onError: (error: any) => {
+      const errorMessage = error.response?.data?.error || error.message || "Failed to update contact";
+      toast.error(errorMessage, { id: 'update-contact' });
     }
   });
 
@@ -96,13 +107,17 @@ const ContactManager = () => {
       if (!selectedContact) throw new Error("No contact selected");
       await axios.delete(`/api/contacts/${selectedContact._id}`);
     },
+    onMutate: () => {
+      toast.loading("Deleting contact...", { id: 'delete-contact' });
+    },
     onSuccess: () => {
-      toast.success("Contact deleted.");
+      toast.success(`${selectedContact?.name} has been removed from your contacts`, { id: 'delete-contact' });
       queryClient.invalidateQueries({ queryKey: ['contacts'] });
       handleCloseModal();
     },
     onError: (error: any) => {
-      toast.error(error.response?.data?.message || "Failed to delete contact.");
+      const errorMessage = error.response?.data?.message || "Failed to delete contact";
+      toast.error(errorMessage, { id: 'delete-contact' });
     }
   });
 
@@ -291,6 +306,7 @@ const ContactManager = () => {
         contactName={selectedContact?.name || ''}
         onClose={handleCloseModal}
         onConfirm={handleDeleteContact}
+        isDeleting={deleteContactMutation.isPending}
       />
     </div>
   );
