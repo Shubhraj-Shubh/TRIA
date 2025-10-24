@@ -1,26 +1,88 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
+/* 1. Yahaan hum Lovable ke saare HSL variables define kar rahe hain */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 240 20% 98%;
+    --foreground: 240 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 220 90% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 262 83% 58%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 8%;
+    --foreground: 240 5% 96%;
+    --card: 240 8% 12%;
+    --card-foreground: 240 5% 96%;
+    --popover: 240 8% 12%;
+    --popover-foreground: 240 5% 96%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 240 5% 96%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 64%;
+    --accent: 220 90% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 262 83% 58%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 2. YEH HAI v4 WAALA FIX: 
+  @apply use karne ke bajaaye, hum direct CSS variables use kar rahe hain. 
+*/
+@layer base {
+  * {
+    /* Pehle: @apply border-border; */
+    border-color: hsl(var(--border)); /* Ab: Direct CSS variable */
+  }
+  body {
+    /* Pehle: @apply bg-background text-foreground; */
+    background-color: hsl(var(--background)); /* Ab: Direct CSS variable */
+    color: hsl(var(--foreground)); /* Ab: Direct CSS variable */
+  }
 }
+
+.contact-card {
+  background: linear-gradient(
+    to bottom right,
+    hsl(var(--card)),
+    hsl(var(--background))
+  );
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.gradient-button {
+  background: linear-gradient(
+    to right,
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+}
+
+
