@@ -160,7 +160,7 @@ const ContactManager = () => {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-40">
+      <header className="border-b border-gray-700 bg-gray-800/80 backdrop-blur-sm sticky top-0 z-40">
        <div className="container mx-auto px-4 py-4">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -222,7 +222,7 @@ const ContactManager = () => {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
             >
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="p-6 bg-card rounded-2xl shadow-sm border border-border">
+                <div key={i} className="p-6 bg-gray-800 rounded-2xl shadow-sm border border-gray-700">
                   <div className="flex items-start gap-4">
                     <Skeleton className="w-16 h-16 rounded-full" />
                     <div className="flex-1 space-y-3 pt-1">
@@ -249,7 +249,7 @@ const ContactManager = () => {
           {/* --- Empty State --- */}
           {!isLoading && !isError && contacts.length === 0 && (
              <motion.div key="empty" className="text-center py-16">
-               <div className="w-24 h-24 rounded-full bg-secondary mx-auto mb-4 flex items-center justify-center">
+               <div className="w-24 h-24 rounded-full bg-gray-800 mx-auto mb-4 flex items-center justify-center">
                  <Users className="w-12 h-12 text-gray-400" />
                </div>
                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
