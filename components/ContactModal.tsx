@@ -48,7 +48,7 @@ export const ContactModal = ({
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl z-50 overflow-hidden"
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-card border-border rounded-2xl shadow-2xl z-50 overflow-hidden"
           >
             {(mode === 'add' || mode === 'edit') ? (
               // --- FORM MODE (ADD/EDIT) ---
@@ -78,37 +78,37 @@ export const ContactModal = ({
                   <motion.img
                     src={contact?.avatarUrl}
                     alt={contact?.name}
-                    className="w-32 h-32 rounded-full ring-4 ring-white dark:ring-gray-800 shadow-xl"
+                    className="w-32 h-32 rounded-full ring-4 ring-card shadow-xl"
                   />
                 </div>
 
                 {/* Content */}
                 <div className="p-6 space-y-6">
                   <div>
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
+                    <h2 className="text-3xl font-bold text-foreground mb-1">
                       {contact?.name}
                     </h2>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-muted-foreground">
                       Last updated {formatDistanceToNow(new Date(contact!.updatedAt), { addSuffix: true })}
                     </p>
                   </div>
 
                   <div className="space-y-4">
-                    <div className="flex items-start gap-3 p-4 bg-gray-100 dark:bg-gray-700/50 rounded-lg">
+                    <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg">
                       <Mail className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Email</p>
-                        <p className="text-sm font-medium text-gray-900 dark:text-white break-all">
+                        <p className="text-xs text-muted-foreground mb-1">Email</p>
+                        <p className="text-sm font-medium text-foreground break-all">
                           {contact?.email}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3 p-4 bg-gray-100 dark:bg-gray-700/50 rounded-lg">
+                    <div className="flex items-start gap-3 p-4 bg-secondary rounded-lg">
                       <Phone className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Phone</p>
-                        <p className="text-sm font-medium text-gray-900 dark:text-white">
+                        <p className="text-xs text-muted-foreground mb-1">Phone</p>
+                        <p className="text-sm font-medium text-foreground ">
                           {contact?.phone.countryCode} {contact?.phone.number}
                         </p>
                       </div>
@@ -116,7 +116,7 @@ export const ContactModal = ({
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="flex gap-3 pt-4 border-t border-border">
                     <Button
                       onClick={onSwitchToEdit}
                       className="flex-1 gap-2 bg-blue-600 text-white hover:bg-blue-700"
