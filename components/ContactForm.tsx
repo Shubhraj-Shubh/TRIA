@@ -34,13 +34,13 @@ export const ContactForm = ({ contact, onSave, onCancel, isLoading = false }: Co
 
   return (
     <form onSubmit={handleSubmit(onSave)} className="p-6">
-      <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
+      <h2 className="text-2xl font-bold mb-6 text-white">
         {contact ? "Edit Contact" : "Add New Contact"}
       </h2>
       
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+          <label className="block text-sm font-medium text-gray-300 mb-1">Name</label>
           <Input 
             {...register("name")}
     className="bg-gray-700"
@@ -53,7 +53,7 @@ export const ContactForm = ({ contact, onSave, onCancel, isLoading = false }: Co
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+          <label className="block text-sm font-medium text-gray-300 mb-1">Email</label>
           <Input 
             {...register("email")}
           className="bg-gray-700"
@@ -67,7 +67,7 @@ export const ContactForm = ({ contact, onSave, onCancel, isLoading = false }: Co
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number</label>
+          <label className="block text-sm font-medium text-gray-300 mb-1">Phone Number</label>
           <div className="flex gap-2">
             <Input
               {...register("phone.countryCode")}
@@ -94,7 +94,7 @@ export const ContactForm = ({ contact, onSave, onCancel, isLoading = false }: Co
         </div>
       </div>
       
-      <div className="flex gap-3 pt-6 mt-6 border-t border-gray-200 dark:border-gray-700">
+      <div className="flex gap-3 pt-6 mt-6 border-t border-gray-700">
         <Button 
           variant="outline" 
           type="button" 
