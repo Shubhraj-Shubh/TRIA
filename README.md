@@ -21,15 +21,29 @@ This project demonstrates a complete full-stack CRUD (Create, Read, Update, Dele
 * **Responsive & Dark Mode Ready:** Fully responsive design that works on all screen sizes, with a default dark mode theme.
 * **Loading & Empty States:** Skeletons for loading and clear "no results" messages for empty states.
 
-<img src= " https://drive.google.com/file/d/1wqDcv0Thdtr_JkChpGj071tUeorCFRYW/view?usp=drivesdk "/>
+### Screenshots
 
-<img src= "  https://drive.google.com/file/d/1GDatp9VHxq7MJkh9ytd4vUdZ6ZYkbl3-/view?usp=drivesdk"/>
+**Main UI (Example):**
 
-<img src= " https://drive.google.com/file/d/139MHnhJiNmZAtD8R1xscIf1IjvQzONM6/view?usp=drivesdk "/>
+![Main UI Screenshot](./public/Dashboard.jpg)
 
-<img src= "https://drive.google.com/file/d/18v3EwJMfBNQWhHQl3FslPUEtbE69_P62/view?usp=drivesdk  "/>
+**Contact Details:**
 
-<img src= "https://drive.google.com/file/d/1epJjrJ8dTmGKzO8WuwxX5679QuoDQRzr/view?usp=drivesdk  "/>
+![Contact Details Screenshot](./public/contact%20details.jpg)
+
+**Add Contact Form:**
+
+![Add Contact Form Screenshot](./public/Add%20Contact%20Form.jpg)
+
+**Sort Functionality:**
+
+![Sort Screenshot](./public/Sort.jpg)
+
+**Delete Modal:**
+
+![Delete Modal Screenshot](./public/Delete%20Modal.jpg)
+
+
 
 
 ## Tech Stack
