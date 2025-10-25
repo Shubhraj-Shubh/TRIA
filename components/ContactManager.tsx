@@ -172,10 +172,10 @@ const ContactManager = () => {
                 <Users className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <h1 className="text-2xl font-bold text-white">
                   Contact Manager
                 </h1>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-400">
                   {/* Show loading or count */}
                   {isLoading ? 'Loading...' : `${contactCount} contacts`}
                 </p>
@@ -242,7 +242,7 @@ const ContactManager = () => {
                <h3 className="text-xl font-semibold text-red-500 mb-2">
                  Failed to load contacts
                </h3>
-               <p className="text-gray-500 dark:text-gray-400">Please try refreshing the page.</p>
+               <p className="text-gray-400">Please try refreshing the page.</p>
              </motion.div>
           )}
 
@@ -252,10 +252,10 @@ const ContactManager = () => {
                <div className="w-24 h-24 rounded-full bg-gray-800 mx-auto mb-4 flex items-center justify-center">
                  <Users className="w-12 h-12 text-gray-400" />
                </div>
-               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+               <h3 className="text-xl font-semibold text-white mb-2">
                  No contacts found
                </h3>
-               <p className="text-gray-500 dark:text-gray-400 mb-6">
+               <p className="text-gray-400 mb-6">
                  Try adjusting your search or add a new contact.
                </p>
              </motion.div>
