@@ -128,7 +128,7 @@ export const ContactModal = ({
                     <Button
                       onClick={onSwitchToDelete}
                       variant="outline"
-                      className="flex-1 gap-2 text-red-600 border-red-500 hover:bg-red-50 hover:text-red-700 dark:hover:bg-red-900/20 dark:text-red-500"
+                      className="flex-1 gap-2 text-red-600 border-red-500  hover:text-red-700 hover:bg-red-900/20 text-red-500"
                     >
                       <Trash2 className="w-4 h-4" />
                       Delete
