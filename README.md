@@ -29,7 +29,7 @@ This project demonstrates a complete full-stack CRUD (Create, Read, Update, Dele
 
 **Contact Details:**
 
-![Contact Details Screenshot](./public/contact%20details.jpg)
+![Contact Details Screenshot](./public/Contact%20Details.jpg)
 
 **Add Contact Form:**
 
