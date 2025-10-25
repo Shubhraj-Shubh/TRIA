@@ -43,7 +43,7 @@ export const ContactForm = ({ contact, onSave, onCancel, isLoading = false }: Co
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
           <Input 
             {...register("name")}
-
+    className="bg-gray-700"
             disabled={isLoading}
             placeholder="John Doe"
           />
@@ -56,7 +56,7 @@ export const ContactForm = ({ contact, onSave, onCancel, isLoading = false }: Co
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
           <Input 
             {...register("email")}
-          
+          className="bg-gray-700"
             disabled={isLoading}
             placeholder="john.doe@example.com"
             type="email"
@@ -72,14 +72,14 @@ export const ContactForm = ({ contact, onSave, onCancel, isLoading = false }: Co
             <Input
               {...register("phone.countryCode")}
               placeholder="+91"
-              className="w-24"
+              className="w-24 bg-gray-700"
               disabled={isLoading}
               maxLength={5}
             />
             <Input
               {...register("phone.number")}
               placeholder="9876543210"
-              className="flex-1 "
+              className="flex-1 bg-gray-700"
               disabled={isLoading}
               maxLength={10}
               type="tel"
