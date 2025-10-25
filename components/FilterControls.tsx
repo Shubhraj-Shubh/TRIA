@@ -61,7 +61,7 @@ export const FilterControls = ({
         <SelectTrigger className="h-12 bg-background border-border hover:bg-secondary/50">
           <SelectValue placeholder="Sort by..." />
         </SelectTrigger>
-        <SelectContent className="bg-popover border-border shadow-lg">
+        <SelectContent className="bg-gray-800 border border-gray-700 shadow-lg">
           {sortOptions.map((option) => (
             <SelectItem key={option.value} value={option.value}>
               {option.label}
@@ -74,7 +74,7 @@ export const FilterControls = ({
         <SelectTrigger className="h-12 bg-background border-border hover:bg-secondary/50">
           <SelectValue placeholder="All Countries" />
         </SelectTrigger>
-        <SelectContent className="bg-popover border-border shadow-lg">
+        <SelectContent className="bg-gray-800 border border-gray-700 shadow-lg">
           {countries.map((country) => (
             <SelectItem key={country.code} value={country.code}>
               {country.name}
