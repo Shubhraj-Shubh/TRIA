@@ -3,7 +3,6 @@
 A modern, full-stack contact management application built with the Next.js App Router, React 19, and MongoDB. The application provides a clean, animated, and responsive interface for managing user contacts, complete with search, sorting, and filtering.
 
 
-
 ## Key Features
 
 This project demonstrates a complete full-stack CRUD (Create, Read, Update, Delete) workflow with a rich user interface.
@@ -21,6 +20,17 @@ This project demonstrates a complete full-stack CRUD (Create, Read, Update, Dele
 * **Notifications:** Clean, simple toast notifications for all actions (create, update, delete) using **Sonner**.
 * **Responsive & Dark Mode Ready:** Fully responsive design that works on all screen sizes, with a default dark mode theme.
 * **Loading & Empty States:** Skeletons for loading and clear "no results" messages for empty states.
+
+<img src= " https://drive.google.com/file/d/1wqDcv0Thdtr_JkChpGj071tUeorCFRYW/view?usp=drivesdk "/>
+
+<img src= "  https://drive.google.com/file/d/1GDatp9VHxq7MJkh9ytd4vUdZ6ZYkbl3-/view?usp=drivesdk"/>
+
+<img src= " https://drive.google.com/file/d/139MHnhJiNmZAtD8R1xscIf1IjvQzONM6/view?usp=drivesdk "/>
+
+<img src= "https://drive.google.com/file/d/18v3EwJMfBNQWhHQl3FslPUEtbE69_P62/view?usp=drivesdk  "/>
+
+<img src= "https://drive.google.com/file/d/1epJjrJ8dTmGKzO8WuwxX5679QuoDQRzr/view?usp=drivesdk  "/>
+
 
 ## Tech Stack
 
